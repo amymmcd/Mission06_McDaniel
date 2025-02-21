@@ -2,6 +2,7 @@
 
 @{
 }
+<h1 class="text-center">Joel Hilton's Movie Collection</h1>
 
 <table class="table table-bordered">
     <thead class="fw-bold">
@@ -25,7 +26,7 @@
     {
         <tr>
             <td>@x.Title</td>
-            <td>@x.Category.CategoryName</td>
+            <td>@x.Category?.CategoryName</td>
             <td>@x.Year</td>
             <td>@x.Director</td>
             <td>@x.Rating</td>

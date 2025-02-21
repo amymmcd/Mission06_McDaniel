@@ -11,7 +11,7 @@ public class Movie
     public int MovieId { get; set; }
     
     [ForeignKey("CategoryId")]
-    public int CategoryId { get; set; }
+    public int? CategoryId { get; set; }
     public Category? Category { get; set; }
    
     [Required(ErrorMessage = "You must enter a Title")]

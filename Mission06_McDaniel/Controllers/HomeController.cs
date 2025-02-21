@@ -30,7 +30,7 @@ public class HomeController : Controller
     {
         ViewBag.Categories = _context.Categories
             .OrderBy(x => x.CategoryName)
-            .ToList();
+            .ToList(); // sends list of categories to the view (for dropdown)
         
         return View(new Movie());
     }
@@ -38,13 +38,13 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult AddMovies(Movie response)
     {
-        if (ModelState.IsValid)
+        if (ModelState.IsValid) // add record to database if data is valid
         {
-            _context.Movies.Add(response); // add record to database
+            _context.Movies.Add(response); 
             _context.SaveChanges();
             return View("Confirmation", response);
         }
-        else
+        else // otherwise, send back to the page with info entered
         {
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
@@ -59,7 +59,7 @@ public class HomeController : Controller
         var movies = _context.Movies
             .Include(x => x.Category)
             .OrderBy(x => x.Title)
-            .ToList();
+            .ToList(); //queries all movies in the database and orders by title, makes list
         
         return View(movies);
     }
@@ -74,7 +74,7 @@ public class HomeController : Controller
             .OrderBy(x => x.CategoryName)
             .ToList();
         
-        return View("AddMovies", recordToEdit);
+        return View("AddMovies", recordToEdit); // reuse the AddMovies view so we don't have to make a new one
     }
 
     [HttpPost]
@@ -83,7 +83,7 @@ public class HomeController : Controller
         _context.Update(updatedMovie);
         _context.SaveChanges();
         
-        return RedirectToAction("ViewMovies");
+        return RedirectToAction("ViewMovies"); 
     }
 
     [HttpGet]
