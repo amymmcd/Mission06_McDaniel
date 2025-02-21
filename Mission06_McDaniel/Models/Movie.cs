@@ -1,5 +1,7 @@
 #nullable enable
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Mission06_McDaniel.Models;
 
 public class Movie
@@ -8,28 +10,29 @@ public class Movie
     [Required]
     public int MovieId { get; set; }
     
-    [Required(ErrorMessage = "You must enter a Category")]
-    public string Category { get; set; }
+    [ForeignKey("CategoryId")]
+    public int CategoryId { get; set; }
+    public Category? Category { get; set; }
    
     [Required(ErrorMessage = "You must enter a Title")]
     public string Title { get; set; }
     
     [Required(ErrorMessage = "You must enter a Year")]
+    [Range(1888, int.MaxValue, ErrorMessage = "Please enter a year after 1888.")]
     public int Year { get; set; }
     
-    [Required(ErrorMessage = "You must enter a Director")]
-    public string Director { get; set; }
+    public string? Director { get; set; }
     
-    [Required(ErrorMessage = "You must enter a rating.")]
-    public string Rating { get; set; }
+    public string? Rating { get; set; }
     
-    // not required
-    public bool? Edited { get; set; } // bool? indicates that it is nullable
+    [Required(ErrorMessage = "You must choose an option for 'Edited'")]
+    public bool Edited { get; set; } 
     
-    // not required
-    public string? LentTo { get; set; } // string? indicates that it is nullable
+    public string? LentTo { get; set; }
+    
+    [Required(ErrorMessage = "You must choose an option for 'Copied to Plex'")]
+    public bool CopiedToPlex { get; set; }
    
-    // not required
     [StringLength(25, ErrorMessage = "Notes cannot be longer than 25 characters.")]
-    public string? Notes { get; set; } // string? indicates that it is nullable
+    public string? Notes { get; set; } 
 }

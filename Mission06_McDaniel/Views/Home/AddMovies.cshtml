@@ -7,24 +7,32 @@
 <h1>@ViewData["Title"]</h1>
 
 <form method="post">
-    <label asp-for="Category">Category:</label>
-    <input asp-for="Category" type="text" required>
-    <br>
+    <input type="hidden" asp-for="MovieId">
 
     <label asp-for="Title">Title:</label>
     <input asp-for="Title" type="text" required>
     <br>
 
+    <label asp-for="CategoryId">Category:</label>
+    <select asp-for="CategoryId" required>
+        <option value="" selected disabled></option> <!-- Blank option -->
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
+    <br>
+
     <label asp-for="Year">Year:</label>
-    <input asp-for="Year" type="text" required>
+    <input asp-for="Year" type="number" required>
     <br>
 
     <label asp-for="Director">Director:</label>
-    <input asp-for="Director" type="text" required>
+    <input asp-for="Director" type="text">
     <br>
 
     <label asp-for="Rating">Rating:</label>
-    <select asp-for="Rating" required>
+    <select asp-for="Rating">
         <option value="" selected disabled></option> <!-- Blank option -->
         <option value="G">G</option>
         <option value="PG">PG</option>
@@ -34,8 +42,7 @@
     <br>
 
     <label asp-for="Edited">Edited?</label>
-    <select asp-for="Edited">
-        <option value="" selected disabled></option> <!-- Blank option -->
+    <select asp-for="Edited" required>
         <option value="false">No</option>
         <option value="true">Yes</option>
     </select>
@@ -45,9 +52,18 @@
     <input asp-for="LentTo" type="text">
     <br>
 
+    <label asp-for="CopiedToPlex">Copied to Plex?</label>
+    <select asp-for="CopiedToPlex" required>
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+    </select>
+    <br>
+
     <label asp-for="Notes">Notes</label>
     <input asp-for="Notes" type="text" maxlength="25">
     <br>
 
     <button type="submit">Submit Movie</button>
 </form>
+
+<div asp-validation-summary="All"></div>

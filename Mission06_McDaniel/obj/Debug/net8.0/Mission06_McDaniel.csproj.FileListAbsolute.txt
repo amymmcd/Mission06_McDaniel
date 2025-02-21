@@ -131,3 +131,4 @@
 /Users/amy/RiderProjects/Mission6/Mission06_McDaniel/obj/Debug/net8.0/Mission06_McDaniel.pdb
 /Users/amy/RiderProjects/Mission6/Mission06_McDaniel/obj/Debug/net8.0/Mission06_McDaniel.genruntimeconfig.cache
 /Users/amy/RiderProjects/Mission6/Mission06_McDaniel/obj/Debug/net8.0/ref/Mission06_McDaniel.dll
+/Users/amy/RiderProjects/Mission6/Mission06_McDaniel/obj/Debug/net8.0/Mission06_McDaniel.sourcelink.json
